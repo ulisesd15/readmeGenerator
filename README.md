@@ -5,13 +5,13 @@
 This program creates and formats a professional readme file so that the user doesn't have to go through the hasstle of formatting the readme file.
 
 ## Table of Contents
-- Installation Steps
-- Usage Info
-- Credits
-- Licensess
-- Creator Info
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+- [Questions](#questions)
 
-## Installation Steps
+## Installation
 To run this project you need to install the inquirer package by running npm install in the command line then running node index.js to start the program.
 
 ## Usage

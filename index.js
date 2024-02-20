@@ -21,23 +21,23 @@ const promptUser = () => {
     { 
       type: 'input', 
       name: 'usageInfo', 
-      message: 'What does the project do?' 
+      message: 'Provide examples of this project in use.' 
     },
     { 
       type: 'input', 
-      name: 'contribution', 
-      message: 'How can others contribute to this project?' 
-    },
-    { 
-      type: 'input', 
-      name: 'testInst', 
-      message: 'How can users use this project?(provide examples of usage)' 
+      name: 'credits', 
+      message: 'Were there other contributors to this project? If so, list them here.' 
     },
     { 
       type: 'list', 
       name: 'license', 
       message: 'Choose a license for this project:', 
       choices: ['MIT', 'Apache', 'GPL' ,'none'] 
+    },
+    { 
+      type: 'input', 
+      name: 'contributing', 
+      message: 'How can other contribute to this project?' 
     },
     { 
       type: 'input', 
@@ -78,16 +78,19 @@ ${data.description}
 ## Installation Steps
 ${data.installSteps}
 
-## Usage Info
+## Usage
 ${data.usageInfo}
 
 ## Credits
-${data.contribution}
+${data.credits}
 
 ## Licenses
 ${data.license}
 
-### Creator Info
+## How to contribute
+${data.contributing}
+
+### Questions
 - GitHub Username: ${data.username}
 - Email Address: ${data.email}
 `;

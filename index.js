@@ -69,13 +69,13 @@ const generateMD = (data) => `
 ${data.description}
 
 ## Table of Contents
-- Installation Steps
-- Usage Info
-- Credits
-- Licensess
-- Creator Info
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+- [Questions](#questions)
 
-## Installation Steps
+## Installation
 ${data.installSteps}
 
 ## Usage

@@ -1,61 +1,105 @@
-// TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-// TODO: Create an array of questions for user input
 
-inquirer
-.prompt([
-    {
+const promptUser = () => {
+  return inquirer.prompt([
+    { 
       type: 'input',
       name: 'title',
-      message: 'What is the title of this project?',
+      message: 'What is the title of this project?'
     },
-    {
+    { 
       type: 'input',
       name: 'description',
-      message: 'Write down a description of the project.',
+      message: 'Write down a description of the project.' 
     },
     {
       type: 'input',
       name: 'installSteps',
-      message: 'What are the steps required to install this project?',
+      message: 'What are the steps required to install this project?' 
     },
-    {
-      type: 'input',
-      name: 'usageInfo',
-      message: 'What does the project do?',
+    { 
+      type: 'input', 
+      name: 'usageInfo', 
+      message: 'Provide examples of this project in use.' 
     },
-    {
-      type: 'input',
-      name: 'contribution',
-      message: 'How can others contribute to this project?',
+    { 
+      type: 'input', 
+      name: 'credits', 
+      message: 'Were there other contributors to this project? If so, list them here.' 
     },
-    {
-      type: 'input',
-      name: 'testInst',
-      message: 'How can use this project?',
+    { 
+      type: 'list', 
+      name: 'license', 
+      message: 'Choose a license for this project:', 
+      choices: ['MIT', 'Apache', 'GPL' ,'none'] 
     },
-    {
-        type: 'choices',
-        name: 'liscence',
-        message: '',
+    { 
+      type: 'input', 
+      name: 'contributing', 
+      message: 'How can other contribute to this project?' 
     },
-    {
-        type: 'iput',
-        name: 'username',
-        message: 'What is your github username?',
+    { 
+      type: 'input', 
+      name: 'username', 
+      message: 'What is your GitHub username?' 
     },
-    {
-        type: 'iput',
-        name: 'email',
-        message: 'What is your email adress?',
+    { 
+      type: 'input', 
+      name: 'email', 
+      message: 'What is your email address?' 
     },
-])
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+  ]);
+};
 
-// TODO: Create a function to initialize app
-function init() {}
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, data, (err) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(`${fileName} file created successfully.`);
+  });
+}
 
-// Function call to initialize app
+const generateMD = (data) => `
+# ${data.title}
+
+## Description
+${data.description}
+
+## Table of Contents
+- Installation Steps
+- Usage Info
+- Credits
+- Licensess
+- Creator Info
+
+## Installation Steps
+${data.installSteps}
+
+## Usage
+${data.usageInfo}
+
+## Credits
+${data.credits}
+
+## Licenses
+${data.license}
+
+## How to contribute
+${data.contributing}
+
+### Questions
+- GitHub Username: ${data.username}
+- Email Address: ${data.email}
+`;
+
+const init = () => {
+  promptUser()
+    .then((answers) => writeToFile('README.md', generateMD(answers)))
+    .then(() => console.log('Successfully wrote README.md'))
+    .catch((err) => console.error(err));
+};
+
 init();
